@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day Langga! ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fff1f2 50%, #fef2f2 100%);
+        }
+
+        /* Floating Hearts Animation */
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 105, 180, 0.3);
+            animation: floatHeart linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.3));
+        }
+        
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Custom Classes */
+        .handwriting {
+            font-family: 'Great Vibes', cursive;
+            font-weight: 400;
+        }
+
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 30% 50%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(255, 105, 180, 0.3) 0%, transparent 50%);
+        }
+
+        .love-letter {
+            background: linear-gradient(145deg, #ffffff 0%, #fff5f5 100%);
+            box-shadow: 0 20px 40px -15px rgba(255, 105, 180, 0.3),
+                        0 0 0 2px rgba(255, 255, 255, 0.8) inset,
+                        0 0 0 4px rgba(255, 192, 203, 0.3) inset;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        .love-letter:hover {
+            transform: translateY(-5px) rotateX(2deg);
+        }
+
+        .heart-icon-pulse {
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            40% { transform: scale(1); }
+            60% { transform: scale(1.1); }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .romantic-card {
+            background: linear-gradient(135deg, #fff9f9 0%, #fff0f7 100%);
+            border-radius: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .romantic-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 192, 203, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .countdown-number {
+            background: linear-gradient(145deg, #ffffff, #fff0f0);
+            box-shadow: 5px 5px 15px rgba(255, 105, 180, 0.2),
+                       -5px -5px 15px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .countdown-number:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 8px 8px 20px rgba(255, 105, 180, 0.3),
+                       -8px -8px 20px rgba(255, 255, 255, 0.9);
+        }
+
+        .music-player {
+            background: linear-gradient(145deg, #ffffff, #fff5f5);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 30px -10px rgba(255, 105, 180, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Visualizer Styles */
+        .visualizer-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 3px;
+            padding: 0 5px;
+            z-index: 1;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .visualizer-bar {
+            width: 12px;
+            border-radius: 6px 6px 0 0;
+            transition: height 0.08s ease;
+            box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.8);
+            animation: barPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes barPulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        /* Progress Bar Styles */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 182, 193, 0.3);
+            border-radius: 3px;
+            margin: 15px 0 10px;
+            position: relative;
+            z-index: 10;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffb6b6, #ffd9d9, #ffb6b6, #ff6b6b);
+            background-size: 200% 100%;
+            border-radius: 3px;
+            width: 0%;
+            position: relative;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .progress-handle {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 2px solid #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+        }
+
+        .progress-container:hover .progress-handle {
+            opacity: 1;
+        }
+
+        /* Time display */
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 5px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .surprise-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffb6b6, #ff8e8e, #ff6b6b);
+            background-size: 300% 300%;
+            animation: gradientShift 5s ease infinite;
+            box-shadow: 0 10px 30px -5px rgba(255, 107, 107, 0.5);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .surprise-message {
+            background: linear-gradient(135deg, #fff3e0, #ffe6e6, #fff0f5);
+            border: 3px solid white;
+            transform-origin: top;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: scaleY(0);
+            }
+            to {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        .divider {
+            background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.3), transparent);
+            height: 2px;
+            width: 100%;
+            margin: 3rem 0;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ffe6e6;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff6b6b, #ffb6b6);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #ff4d4d, #ff9999);
+        }
+
+        /* Hide audio element */
+        #hiddenAudio {
+            display: none;
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Floating Hearts Background -->
+    <div class="heart-bg" id="heartContainer"></div>
+    
+    <!-- Hidden audio element with your local song -->
+    <audio id="hiddenAudio" loop preload="auto" crossorigin="anonymous">
+        <source src="music/Christina Perri - A Thousand Years (Piano_Cello Co.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Main Content -->
+    <div class="relative z-10">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+            <div class="hero-gradient absolute inset-0"></div>
+            
+            <!-- Decorative elements -->
+            <div class="absolute top-20 left-10 text-6xl floating">❤️</div>
+            <div class="absolute bottom-20 right-10 text-6xl floating" style="animation-delay: 1s;">💖</div>
+            <div class="absolute top-40 right-20 text-4xl floating" style="animation-delay: 2s;">💕</div>
+            
+            <div class="text-center relative">
+                <div class="mb-8">
+                    <span class="inline-block text-7xl heart-icon-pulse mb-4">❤️</span>
+                </div>
+                <h1 class="handwriting text-7xl md:text-9xl font-bold bg-gradient-to-r from-red-400 via-pink-500 to-rose-400 bg-clip-text text-transparent mb-6">
+                    Happy Valentine's Day
+                </h1>
+                <p class="handwriting text-5xl md:text-7xl text-pink-600 mb-8 drop-shadow-lg">
+                    Ana Mae Nodalo Calumpag
+                    <span class="inline-block animate-ping text-6xl">❤️</span>
+                </p>
+                
+                <!-- Decorative hearts -->
+                <div class="mt-12 flex justify-center space-x-6">
+                    <span class="heart-icon-pulse text-3xl">💗</span>
+                    <span class="heart-icon-pulse text-3xl" style="animation-delay: 0.2s">💖</span>
+                    <span class="heart-icon-pulse text-3xl" style="animation-delay: 0.4s">💘</span>
+                    <span class="heart-icon-pulse text-3xl" style="animation-delay: 0.6s">💝</span>
+                </div>
+            </div>
+            
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div class="w-6 h-10 border-2 border-pink-400 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-pink-400 rounded-full mt-2 animate-pulse"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Love Letter Section -->
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="love-letter rounded-[3rem] p-8 md:p-16 relative">
+                    <!-- Decorative corners -->
+                    <div class="absolute top-5 left-5 text-3xl">💌</div>
+                    <div class="absolute top-5 right-5 text-3xl">💌</div>
+                    <div class="absolute bottom-5 left-5 text-3xl">💌</div>
+                    <div class="absolute bottom-5 right-5 text-3xl">💌</div>
+                    
+                    <h2 class="handwriting text-5xl md:text-6xl text-center bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent mb-10">
+                        Lang!,
+                    </h2>
+                    
+                    <div class="handwriting text-2xl md:text-3xl text-gray-700 leading-relaxed space-y-6 max-w-2xl mx-auto">
+                        <p class="relative pl-8">
+                            <span class="absolute left-0 text-4xl">💫</span>
+                            Saon mani nako pag sugod ba, Hmmm... kabalo ka sukad tong mi abot kas akong kinabuhi na feel nako angayan kaayo mag pa bilin aris kalibutan basta kauban ka.
+                        </p>
+                        
+                        <p class="relative pl-8">
+                            <span class="absolute left-0 text-4xl">✨</span>
+                            Lami kaayos paminaw lang na naas kas akoa ron a feel jud nako og unsa ko ka importante sa imoha og mao sab ka sa akoa lang love kaayo tika uy!
+                        </p>
+                        
+                        <p class="relative pl-8">
+                            <span class="absolute left-0 text-4xl">💝</span>
+                            Unta kani nga simple message is maka palipay sa imoha bisag amay, dili ko ganahan mag post post kay wala ko ma anad man maong gi ingon nalang ani nalang nako ang pamaagi.
+                        </p>
+                        
+                        <div class="mt-12 text-right">
+                            <p class="handwriting text-4xl text-pink-600">Forever yours,</p>
+                            <p class="handwriting text-4xl text-red-500 mt-2 relative inline-block">
+                                - Jet
+                                <span class="absolute -right-8 top-0 text-3xl heart-icon-pulse">❤️</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Interactive Surprise Section -->
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="inline-block text-6xl mb-4 floating">🎁</span>
+                    <h2 class="handwriting text-5xl text-pink-600">A Little Surprise For You</h2>
+                </div>
+                
+                <!-- Surprise Button -->
+                <div class="text-center">
+                    <button onclick="showSurprise()" class="surprise-button text-white font-bold py-6 px-12 rounded-full transition-all transform hover:scale-110 shadow-xl text-2xl relative overflow-hidden group">
+                        <span class="relative z-10">Click for a Special Surprise! 🎁</span>
+                        <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                    </button>
+                    
+                    <div id="surpriseMessage" class="surprise-message hidden mt-12 p-12 rounded-[3rem] shadow-2xl">
+                        <div class="relative">
+                            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 text-5xl">
+                                💝
+                            </div>
+                            <p class="handwriting text-6xl text-red-600 mb-8">Dili ko mag sawa na higugmaon ka lang!</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                                <div class="text-left">
+                                    <p class="text-2xl text-gray-700 leading-relaxed">
+                                        Love tika kaayo lang, ayawg ka gool sa akoa kay ikaw ra akong higugmaon hantod sa hantod makita man sab na nimos akoa na dili ko interesado sa uban, isa pa syempre mag focus tas atong pag skwela kay mao ranay maka tabang sa atoa puhon support rako always sa imoha lang. Ayaw kalimot og pasalamat sa ginoo sa tanan nimong nadawat blessings or achievements karon na year.
+                                    </p>
+                                    <p class="handwriting text-3xl text-pink-600 mt-6">
+                                        I love you more than all the stars in the sky! ⭐
+                                    </p>
+                                </div>
+                                <div class="flex justify-center space-x-4">
+                                    <span class="text-7xl heart-icon-pulse">❤️</span>
+                                    <span class="text-7xl heart-icon-pulse" style="animation-delay: 0.3s">💖</span>
+                                    <span class="text-7xl heart-icon-pulse" style="animation-delay: 0.6s">💗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Music Player with Multi-Color Bar Visualizer -->
+        <section class="py-20 px-4">
+            <div class="max-w-md mx-auto">
+                <div class="music-player rounded-[2rem] p-8 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-300 via-pink-300 to-red-300"></div>
+                    
+                    <!-- Multi-color Visualizer Bars (Always visible) -->
+                    <div class="visualizer-container" id="visualizerContainer"></div>
+                    
+                    <div class="text-center mb-8 relative z-10">
+                        <span class="inline-block text-5xl mb-4 floating">🎵</span>
+                        <h3 class="handwriting text-4xl text-pink-600">A Thousand Years</h3>
+                        <p class="text-sm text-gray-500 mt-1">Christina Perri (Piano/Cello)</p>
+                    </div>
+                    
+                    <!-- Album art simulation -->
+                    <div class="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-red-200 to-pink-200 flex items-center justify-center shadow-xl floating relative z-10">
+                        <span class="text-6xl relative z-10">🎹</span>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="progress-container relative z-10" id="progressContainer">
+                        <div class="progress-bar" id="progressBar"></div>
+                        <div class="progress-handle" id="progressHandle"></div>
+                    </div>
+                    
+                    <!-- Time Display -->
+                    <div class="time-display relative z-10">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">3:45</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-center space-x-6 mb-6 relative z-10">
+                        <button class="text-4xl hover:text-red-500 transition-all transform hover:scale-125" id="prevBtn" title="Restart">⏮️</button>
+                        <button class="text-7xl hover:text-red-500 transition-all transform hover:scale-125 active:scale-95" id="playBtn">
+                            ▶️
+                        </button>
+                        <button class="text-4xl hover:text-red-500 transition-all transform hover:scale-125" id="nextBtn" title="Replay">⏭️</button>
+                    </div>
+
+                    <!-- Volume Control -->
+                    <div class="flex justify-center items-center space-x-4 text-pink-400 relative z-10">
+                        <span>🔊</span>
+                        <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5" class="w-32 accent-pink-400">
+                        <span class="text-sm text-gray-500">Volume</span>
+                    </div>
+                    
+                    <!-- Song status -->
+                    <div class="text-center mt-4 text-xs text-gray-400 relative z-10">
+                        <span id="songStatus">Ready to play</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Countdown to Anniversary -->
+        <section class="py-20 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="romantic-card p-12 md:p-20 relative">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M30 45L15 30 30 15 45 30 30 45z" fill="%23ffb6c1" fill-opacity="0.1"/%3E%3C/svg%3E')]"></div>
+                    
+                    <div class="relative text-center">
+                        <div class="mb-8">
+                            <span class="inline-block text-7xl floating">⏰</span>
+                        </div>
+                        
+                        <h2 class="handwriting text-6xl md:text-7xl text-pink-600 mb-4">
+                            Counting Down to Our Special Day
+                        </h2>
+                        
+                        <div class="mb-8">
+                            <span class="inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-3 rounded-full text-2xl font-light">
+                                September 3, 2026
+                            </span>
+                        </div>
+                        
+                        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+                            The day we said "Hi!" and my world became complete
+                        </p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto">
+                            <div class="countdown-number rounded-2xl p-6 text-center">
+                                <div class="text-5xl md:text-6xl font-bold text-red-500 mb-2" id="days">00</div>
+                                <div class="text-gray-500 uppercase tracking-wider text-sm">Days</div>
+                            </div>
+                            <div class="countdown-number rounded-2xl p-6 text-center">
+                                <div class="text-5xl md:text-6xl font-bold text-red-500 mb-2" id="hours">00</div>
+                                <div class="text-gray-500 uppercase tracking-wider text-sm">Hours</div>
+                            </div>
+                            <div class="countdown-number rounded-2xl p-6 text-center">
+                                <div class="text-5xl md:text-6xl font-bold text-red-500 mb-2" id="minutes">00</div>
+                                <div class="text-gray-500 uppercase tracking-wider text-sm">Minutes</div>
+                            </div>
+                            <div class="countdown-number rounded-2xl p-6 text-center">
+                                <div class="text-5xl md:text-6xl font-bold text-red-500 mb-2" id="seconds">00</div>
+                                <div class="text-gray-500 uppercase tracking-wider text-sm">Seconds</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <p class="handwriting text-4xl text-pink-600 mb-4">
+                                Can't wait to celebrate with you, love!
+                            </p>
+                            <div class="flex justify-center space-x-4">
+                                <span class="text-3xl">💑</span>
+                                <span class="text-3xl">💕</span>
+                                <span class="text-3xl">💞</span>
+                                <span class="text-3xl">💓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Romantic Quote Section -->
+        <section class="py-16 px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white/50 backdrop-blur-sm rounded-[3rem] p-12 text-center relative">
+                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 text-4xl bg-white px-4 rounded-full">
+                        💕
+                    </div>
+                    
+                    <p class="handwriting text-4xl md:text-5xl text-gray-700 leading-relaxed mb-6">
+                        "Ikaw na jud<br>wala nakoy la-ing<br>gina pamiling lang,<br>I love you so much,<br> and Happy Valentine's Day."
+                    </p>
+                    
+                    <div class="flex justify-center space-x-6 mt-8">
+                        <span class="text-4xl heart-icon-pulse">❤️</span>
+                        <span class="text-4xl heart-icon-pulse" style="animation-delay: 0.2s">🧡</span>
+                        <span class="text-4xl heart-icon-pulse" style="animation-delay: 0.4s">💛</span>
+                        <span class="text-4xl heart-icon-pulse" style="animation-delay: 0.6s">💚</span>
+                        <span class="text-4xl heart-icon-pulse" style="animation-delay: 0.8s">💙</span>
+                        <span class="text-4xl heart-icon-pulse" style="animation-delay: 1s">💜</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-4 mt-20 relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-pink-100/50 to-transparent"></div>
+            
+            <div class="relative max-w-4xl mx-auto text-center">
+                <div class="mb-6">
+                    <span class="inline-block text-5xl floating">💌</span>
+                </div>
+                
+                <p class="text-gray-500 mb-6">
+                    © 2026, Jet Habac.<br> All rights reserved.
+                </p>
+                
+                <div class="flex justify-center space-x-8 text-gray-400">
+                    <span>❤️</span>
+                    <span>💖</span>
+                    <span>💗</span>
+                    <span>💓</span>
+                    <span>💕</span>
+                    <span>💞</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Floating Hearts
+        function createHeart() {
+            const heartContainer = document.getElementById('heartContainer');
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            
+            // Random heart emoji
+            const hearts = ['❤️', '💖', '💗', '💓', '💕', '💞', '💝', '💘'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 30 + 15) + 'px';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.animationDelay = (Math.random() * 2) + 's';
+            
+            heartContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 13000);
+        }
+        
+        // Create hearts more frequently for better effect
+        setInterval(createHeart, 300);
+
+        // Surprise Message
+        function showSurprise() {
+            const surprise = document.getElementById('surpriseMessage');
+            if (surprise.style.display === 'none' || surprise.style.display === '') {
+                surprise.style.display = 'block';
+                surprise.classList.add('fade-in');
+                
+                // Create celebration hearts
+                for(let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        createHeart();
+                    }, i * 100);
+                }
+            } else {
+                surprise.style.display = 'none';
+            }
+        }
+
+        // Countdown Timer for September 3, 2026
+        function updateCountdown() {
+            const anniversaryDate = new Date('September 3, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = anniversaryDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // ========== MUSIC PLAYER WITH MULTI-COLOR BAR VISUALIZER ==========
+        const audio = document.getElementById('hiddenAudio');
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const volumeControl = document.getElementById('volumeControl');
+        const songStatus = document.getElementById('songStatus');
+        const visualizerContainer = document.getElementById('visualizerContainer');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const progressHandle = document.getElementById('progressHandle');
+        const currentTimeSpan = document.getElementById('currentTime');
+        const durationSpan = document.getElementById('duration');
+        
+        let isPlaying = false;
+        let audioContext = null;
+        let analyser = null;
+        let source = null;
+        let animationFrame = null;
+        let visualizerActive = false;
+
+        // Multi-color gradients for bars (rich romantic colors)
+        const colorPalette = [
+            '#ff4d4d', // Bright red
+            '#ff6b6b', // Coral red
+            '#ff8e8e', // Light coral
+            '#ffb6b6', // Pink
+            '#ffb6c1', // Light pink
+            '#ff69b4', // Hot pink
+            '#ff1493', // Deep pink
+            '#ff85b3', // Rose pink
+            '#ffa07a', // Light salmon
+            '#ff7f50', // Coral
+            '#ff6347', // Tomato
+            '#ff4500', // Orange red
+            '#ff8c00', // Dark orange
+            '#ffa500', // Orange
+            '#ffd700'  // Gold
+        ];
+
+        // Create visualizer bars
+        function createVisualizerBars() {
+            visualizerContainer.innerHTML = '';
+            for (let i = 0; i < 45; i++) { // More bars for richer visual
+                const bar = document.createElement('div');
+                bar.classList.add('visualizer-bar');
+                bar.style.height = '5px';
+                bar.style.animationDelay = `${i * 0.03}s`;
+                
+                // Assign random color from palette (changes dynamically later)
+                const randomColor = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+                bar.style.background = `linear-gradient(to top, ${randomColor}, ${randomColor}dd, ${randomColor}88)`;
+                
+                // Varied widths for visual interest
+                if (i % 4 === 0) bar.style.width = '16px';
+                else if (i % 4 === 1) bar.style.width = '12px';
+                else if (i % 4 === 2) bar.style.width = '10px';
+                else bar.style.width = '8px';
+                
+                visualizerContainer.appendChild(bar);
+            }
+        }
+        createVisualizerBars();
+
+        // Format time (seconds to MM:SS)
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Update progress bar and time
+        function updateProgress() {
+            if (audio.duration) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = progress + '%';
+                progressHandle.style.left = progress + '%';
+                currentTimeSpan.textContent = formatTime(audio.currentTime);
+                durationSpan.textContent = formatTime(audio.duration);
+            }
+        }
+
+        // Initialize Audio Context
+        function initAudioContext() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 256;
+                source = audioContext.createMediaElementSource(audio);
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+            }
+        }
+
+        // Update visualizer
+        function updateVisualizer() {
+            if (!analyser || !isPlaying) return;
+            
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(dataArray);
+            
+            // Update progress
+            updateProgress();
+            
+            // Update bars with dynamic colors based on frequency
+            const bars = document.querySelectorAll('.visualizer-bar');
+            const step = Math.floor(dataArray.length / bars.length);
+            
+            bars.forEach((bar, i) => {
+                const value = dataArray[i * step] / 255; // Normalize 0-1
+                const height = Math.max(5, value * 110); // Min 5px, max 115px
+                bar.style.height = height + 'px';
+                
+                // Dynamic multi-color based on frequency and intensity
+                const intensity = 0.5 + value * 0.5;
+                
+                // Create rich gradient with multiple colors
+                if (value > 0.7) {
+                    // High intensity - vibrant reds and oranges
+                    bar.style.background = `linear-gradient(to top, #ff4500, #ff6b6b, #ffb6b6)`;
+                } else if (value > 0.4) {
+                    // Medium intensity - pinks and corals
+                    bar.style.background = `linear-gradient(to top, #ff69b4, #ff8e8e, #ffb6c1)`;
+                } else {
+                    // Low intensity - soft pinks and golds
+                    bar.style.background = `linear-gradient(to top, #ffb6c1, #ffd9d9, #fff0f5)`;
+                }
+                
+                // Add glow effect based on intensity
+                bar.style.boxShadow = `0 -2px ${10 + value * 20}px rgba(255, ${100 + value * 155}, ${100 + value * 155}, 0.8)`;
+                
+                // Random color variation for some bars
+                if (i % 5 === 0 && value > 0.5) {
+                    bar.style.background = `linear-gradient(to top, #ffd700, #ffa500, #ff8c00)`;
+                } else if (i % 7 === 0 && value > 0.3) {
+                    bar.style.background = `linear-gradient(to top, #ff1493, #ff69b4, #ffb6c1)`;
+                }
+            });
+            
+            animationFrame = requestAnimationFrame(updateVisualizer);
+        }
+
+        // Set initial volume
+        if (audio && volumeControl) {
+            audio.volume = 0.5;
+        }
+
+        // Get audio duration when metadata loaded
+        audio.addEventListener('loadedmetadata', () => {
+            durationSpan.textContent = formatTime(audio.duration);
+        });
+
+        // Progress bar click to seek
+        if (progressContainer && audio) {
+            progressContainer.addEventListener('click', (e) => {
+                const rect = progressContainer.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+                updateProgress();
+            });
+        }
+
+        // Play/Pause functionality
+        if (playBtn && audio) {
+            playBtn.addEventListener('click', async () => {
+                if (audio.paused) {
+                    try {
+                        // Initialize audio context on user interaction
+                        if (!audioContext) {
+                            initAudioContext();
+                        }
+                        if (audioContext && audioContext.state === 'suspended') {
+                            await audioContext.resume();
+                        }
+                        
+                        await audio.play();
+                        playBtn.textContent = '⏸️';
+                        playBtn.classList.add('animate-pulse');
+                        songStatus.textContent = 'Now Playing: A Thousand Years';
+                        isPlaying = true;
+                        
+                        // Start visualizer
+                        if (analyser && !visualizerActive) {
+                            visualizerActive = true;
+                            updateVisualizer();
+                        }
+                        
+                        // Create floating musical hearts
+                        for(let i = 0; i < 5; i++) {
+                            setTimeout(() => {
+                                createHeart();
+                            }, i * 200);
+                        }
+                    } catch (e) {
+                        console.log("Playback failed: ", e);
+                        songStatus.textContent = 'Error: Click to try again';
+                        alert("Audio playback failed. Make sure the MP3 file is in the music folder.\n\nFile name: Christina Perri - A Thousand Years (Piano_Cello Co.mp3");
+                    }
+                } else {
+                    audio.pause();
+                    playBtn.textContent = '▶️';
+                    playBtn.classList.remove('animate-pulse');
+                    songStatus.textContent = 'Paused';
+                    isPlaying = false;
+                    
+                    // Stop visualizer updates but keep bars at minimum
+                    if (animationFrame) {
+                        cancelAnimationFrame(animationFrame);
+                        visualizerActive = false;
+                        
+                        // Reset bars to minimum
+                        document.querySelectorAll('.visualizer-bar').forEach(bar => {
+                            bar.style.height = '5px';
+                            bar.style.background = 'linear-gradient(to top, #ffb6c1, #ffd9d9, #fff0f5)';
+                            bar.style.boxShadow = '0 -2px 10px rgba(255, 182, 193, 0.5)';
+                        });
+                    }
+                }
+            });
+        }
+
+        // Previous button (restart)
+        if (prevBtn && audio) {
+            prevBtn.addEventListener('click', () => {
+                audio.currentTime = 0;
+                if (!audio.paused) {
+                    audio.play();
+                }
+                songStatus.textContent = 'Restarting song...';
+                setTimeout(() => {
+                    songStatus.textContent = audio.paused ? 'Paused' : 'Now Playing: A Thousand Years';
+                }, 500);
+                updateProgress();
+                
+                // Create hearts
+                for(let i = 0; i < 3; i++) setTimeout(() => createHeart(), i*100);
+            });
+        }
+
+        // Next button (replay)
+        if (nextBtn && audio) {
+            nextBtn.addEventListener('click', () => {
+                audio.currentTime = 0;
+                if (!audio.paused) {
+                    audio.play();
+                }
+                songStatus.textContent = 'Replaying song...';
+                setTimeout(() => {
+                    songStatus.textContent = audio.paused ? 'Paused' : 'Now Playing: A Thousand Years';
+                }, 500);
+                updateProgress();
+                
+                for(let i = 0; i < 3; i++) setTimeout(() => createHeart(), i*100);
+            });
+        }
+
+        // Volume control
+        if (volumeControl && audio) {
+            volumeControl.addEventListener('input', (e) => {
+                audio.volume = e.target.value;
+            });
+        }
+
+        // When audio ends
+        if (audio) {
+            audio.addEventListener('ended', () => {
+                playBtn.textContent = '▶️';
+                playBtn.classList.remove('animate-pulse');
+                songStatus.textContent = 'Song ended';
+                isPlaying = false;
+                
+                // Reset visualizer
+                if (animationFrame) {
+                    cancelAnimationFrame(animationFrame);
+                    visualizerActive = false;
+                    document.querySelectorAll('.visualizer-bar').forEach(bar => {
+                        bar.style.height = '5px';
+                        bar.style.background = 'linear-gradient(to top, #ffb6c1, #ffd9d9, #fff0f5)';
+                        bar.style.boxShadow = '0 -2px 10px rgba(255, 182, 193, 0.5)';
+                    });
+                }
+                
+                // Reset progress bar
+                progressBar.style.width = '0%';
+                progressHandle.style.left = '0%';
+                currentTimeSpan.textContent = '0:00';
+            });
+        }
+
+        // Update progress while playing
+        audio.addEventListener('timeupdate', updateProgress);
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply to sections
+        document.querySelectorAll('section').forEach((section) => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 1s ease, transform 1s ease';
+            observer.observe(section);
+        });
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax effect for hearts
+        window.addEventListener('scroll', () => {
+            const hearts = document.querySelectorAll('.floating-heart');
+            hearts.forEach(heart => {
+                const speed = 0.5;
+                const rect = heart.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    heart.style.transform = `translateY(${window.scrollY * speed}px)`;
+                }
+            });
+        });
+
+        // Check if audio file exists
+        window.addEventListener('load', function() {
+            audio.addEventListener('error', function() {
+                songStatus.textContent = '⚠️ Audio file not found';
+                console.error('Audio file not found. Make sure "Christina Perri - A Thousand Years (Piano_Cello Co.mp3" is in the music folder.');
+            });
+        });
+
+        // Handle page visibility change to prevent audio context issues
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && audioContext) {
+                audioContext.suspend();
+            } else if (!document.hidden && audioContext && audioContext.state === 'suspended' && isPlaying) {
+                audioContext.resume();
+            }
+        });
+    </script>
+</body>
+</html>
