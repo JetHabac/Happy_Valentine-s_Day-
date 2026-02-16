@@ -6,7 +6,7 @@
     <title>Happy Valentine's Day Langga! ❤️</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap');
         
         * {
             margin: 0;
@@ -14,13 +14,50 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #fdf2f8 0%, #fff1f2 50%, #fef2f2 100%);
+        :root{
+            --bg-1: #0b0f1a;
+            --bg-2: #071020;
+            --neon-cyan: #00f0ff;
+            --neon-pink: #ff4dd2;
+            --neon-purple: #9b6bff;
+            --glass: rgba(255,255,255,0.04);
+            --muted: #9aa4b2;
         }
 
-        /* Floating Hearts Animation */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            overflow-x: hidden;
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(155,107,255,0.06), transparent 10%),
+                        radial-gradient(1000px 500px at 90% 80%, rgba(0,240,255,0.04), transparent 10%),
+                        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+            color: #e6eef8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Starry GIF background layer (place the GIF at assets/starry.gif) */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image: url('giphy.gif');
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.85;
+            transform-origin: center;
+            filter: saturate(1.05) contrast(1.02) blur(2px);
+        }
+
+        /* When reduced motion is preferred, keep the GIF opacity lower and avoid parallax/animation */
+        @media (prefers-reduced-motion: reduce) {
+            body::before { opacity: 0.6; }
+            .floating-heart, .char-float { animation: none !important; }
+        }
+
+        /* Floating Shapes Animation (neon) */
         .heart-bg {
             position: fixed;
             top: 0;
@@ -29,13 +66,16 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
+            mix-blend-mode: screen;
         }
-        
+
         .floating-heart {
             position: absolute;
-            color: rgba(255, 105, 180, 0.3);
+            color: var(--neon-cyan);
             animation: floatHeart linear infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.3));
+            filter: drop-shadow(0 0 12px rgba(0,240,255,0.22)) blur(0.2px);
+            transform-origin: center;
+            opacity: 0.9;
         }
         
         @keyframes floatHeart {
@@ -57,28 +97,63 @@
 
         /* Custom Classes */
         .handwriting {
-            font-family: 'Great Vibes', cursive;
-            font-weight: 400;
+            /* Repurposed for futuristic headings */
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        /* Hero-specific responsive tweaks */
+        .hero-section {
+            min-height: 88vh;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
+            color: rgba(230,238,248,0.9);
+            font-weight: 600;
+        }
+
+        .hero-decor { opacity: 0.9; }
+
+        @media (max-width: 640px) {
+            .hero-section { min-height: 64vh; padding-top: 1.25rem; padding-bottom: 1.25rem; }
+            .hero-title { font-size: 1.75rem !important; }
+            .hero-subtitle { font-size: 1rem !important; }
+            .hero-decor { display: none !important; }
+            .handwriting { font-size: 1rem; }
+            .hero-gradient { opacity: 0.6; }
+            .heart-icon-pulse { font-size: 2rem; }
         }
 
         .glass-morphism {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.025));
+            backdrop-filter: blur(8px) saturate(1.2);
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
         }
 
         .hero-gradient {
-            background: radial-gradient(circle at 30% 50%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(255, 105, 180, 0.3) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 20%, rgba(155,107,255,0.12) 0%, transparent 30%),
+                        radial-gradient(circle at 80% 80%, rgba(0,240,255,0.08) 0%, transparent 30%);
         }
 
         .love-letter {
-            background: linear-gradient(145deg, #ffffff 0%, #fff5f5 100%);
-            box-shadow: 0 20px 40px -15px rgba(255, 105, 180, 0.3),
-                        0 0 0 2px rgba(255, 255, 255, 0.8) inset,
-                        0 0 0 4px rgba(255, 192, 203, 0.3) inset;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            box-shadow: 0 12px 40px rgba(15, 20, 30, 0.6), inset 0 1px 0 rgba(255,255,255,0.02);
             transform-style: preserve-3d;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
         .love-letter:hover {
@@ -87,6 +162,7 @@
 
         .heart-icon-pulse {
             animation: heartBeat 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 6px 20px rgba(155,107,255,0.12));
         }
 
         @keyframes heartBeat {
@@ -106,10 +182,11 @@
         }
 
         .romantic-card {
-            background: linear-gradient(135deg, #fff9f9 0%, #fff0f7 100%);
-            border-radius: 2rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius: 1.5rem;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.04);
         }
 
         .romantic-card::before {
@@ -129,22 +206,70 @@
         }
 
         .countdown-number {
-            background: linear-gradient(145deg, #ffffff, #fff0f0);
-            box-shadow: 5px 5px 15px rgba(255, 105, 180, 0.2),
-                       -5px -5px 15px rgba(255, 255, 255, 0.8);
-            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #fff5f7, #fff0f3);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
         }
 
         .countdown-number:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 8px 8px 20px rgba(255, 105, 180, 0.3),
-                       -8px -8px 20px rgba(255, 255, 255, 0.9);
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 14px 40px rgba(255,105,180,0.18);
+        }
+
+        /* Larger, styled numbers for the countdown (digital/neon) */
+        #days, #hours, #minutes, #seconds {
+            font-size: 2.6rem;
+            line-height: 1;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            text-shadow: 0 8px 28px rgba(0,240,255,0.14), 0 1px 0 rgba(255,255,255,0.02);
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.02em;
+        }
+
+        /* Anniversary badge styling */
+        .anniversary-badge {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 600;
+            box-shadow: 0 18px 50px rgba(155,107,255,0.08), 0 6px 30px rgba(0,240,255,0.04) inset;
+            border: 1px solid rgba(0,240,255,0.08);
+            color: #0b1020;
+            font-size: 1.05rem;
+            position: relative;
+            overflow: visible;
+            background: linear-gradient(90deg, rgba(0,240,255,0.95), rgba(155,107,255,0.9));
+            color: #071026;
+        }
+
+        .anniversary-badge::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, rgba(0,240,255,0.12), transparent 40%);
+            filter: blur(12px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @media (max-width: 640px) {
+            #days, #hours, #minutes, #seconds { font-size: 2rem; }
+            .anniversary-badge { font-size: 1rem; padding: 0.6rem 1rem; }
         }
 
         .music-player {
-            background: linear-gradient(145deg, #ffffff, #fff5f5);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 30px -10px rgba(255, 105, 180, 0.3);
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid rgba(0,240,255,0.06);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
             position: relative;
             overflow: hidden;
         }
@@ -155,23 +280,24 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 120px;
+            height: 140px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            gap: 3px;
+            gap: 6px;
             padding: 0 5px;
             z-index: 1;
-            opacity: 0.8;
             pointer-events: none;
+            mix-blend-mode: screen;
         }
 
         .visualizer-bar {
             width: 12px;
             border-radius: 6px 6px 0 0;
-            transition: height 0.08s ease;
-            box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.8);
-            animation: barPulse 1s ease-in-out infinite;
+            transition: height 0.06s linear, box-shadow 0.06s linear;
+            box-shadow: 0 0 20px rgba(0,240,255,0.12);
+            animation: barPulse 0.9s ease-in-out infinite;
+            background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));
         }
 
         @keyframes barPulse {
@@ -232,7 +358,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 0.75rem;
-            color: #9ca3af;
+            color: #ffffff;
             margin-top: 5px;
             z-index: 10;
             position: relative;
@@ -251,8 +377,10 @@
         }
 
         .surprise-message {
-            background: linear-gradient(135deg, #fff3e0, #ffe6e6, #fff0f5);
-            border: 3px solid white;
+            /* removed boxed background to let page backdrop show through */
+            background: transparent;
+            border: none;
+            box-shadow: none;
             transform-origin: top;
             animation: slideDown 0.5s ease-out;
         }
@@ -297,6 +425,88 @@
         #hiddenAudio {
             display: none;
         }
+
+        /* Animated character (bottom-right) */
+        .animated-character {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 140px;
+            height: 160px;
+            z-index: 60;
+            pointer-events: auto;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            transition: transform 0.25s ease;
+        }
+
+        .animated-character:hover { transform: translateY(-6px) scale(1.03); }
+
+        .char-float { animation: floatY 3.8s ease-in-out infinite; }
+        @keyframes floatY { 0% { transform: translateY(0); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0); } }
+
+        .char-robot svg { width: 100%; height: auto; display: block; }
+
+        .char-eye { transform-origin: center; }
+        .char-eye.blink { animation: blink 4s infinite; }
+        @keyframes blink { 0%,94% { transform: scaleY(1); } 96% { transform: scaleY(0.08); } 100% { transform: scaleY(1); } }
+
+        /* character shadow and mouth */
+        .char-shadow { filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+        .char-mouth { transform-origin: 60px 76px; transform-box: fill-box; transition: transform 220ms ease; }
+        .char-mouth.smile { transform: translateY(2px) scale(1.6,0.5); }
+
+        /* wave on click */
+        .char-wave { animation: wave 420ms ease; }
+        @keyframes wave { 0% { transform: translateY(0) rotate(0deg); } 40% { transform: translateY(-10px) rotate(-6deg); } 100% { transform: translateY(0) rotate(0deg); } }
+
+        /* small screens: hide to avoid overlap */
+        @media (max-width: 640px) {
+            /* show a smaller, less intrusive character on phones */
+            .animated-character { display: flex; right: 10px; bottom: 10px; width: 92px; height: 110px; opacity: 0.98; }
+            .char-float { animation-duration: 4.4s; }
+            .char-robot svg { width: 100%; }
+            .char-eye { transform-origin: center; }
+        }
+
+        /* speech bubble shown above the character */
+        .char-bubble {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            transform: translateY(8px) scale(0.96);
+            opacity: 0;
+            pointer-events: none;
+            background: linear-gradient(90deg, rgba(155,107,255,0.12), rgba(0,240,255,0.08));
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.95rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 20px rgba(155,107,255,0.06);
+            transition: transform 200ms ease, opacity 200ms ease;
+            white-space: nowrap;
+            z-index: 70;
+        }
+
+        .char-bubble::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -8px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid rgba(155,107,255,0.12);
+            filter: blur(0.2px);
+        }
+
+        .char-bubble.show { opacity: 1; transform: translateY(0) scale(1); }
     </style>
 </head>
 <body class="relative">
@@ -312,24 +522,24 @@
     <!-- Main Content -->
     <div class="relative z-10">
         <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+        <section class="hero-section min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
             <div class="hero-gradient absolute inset-0"></div>
             
             <!-- Decorative elements -->
-            <div class="absolute top-20 left-10 text-6xl floating">❤️</div>
-            <div class="absolute bottom-20 right-10 text-6xl floating" style="animation-delay: 1s;">💖</div>
-            <div class="absolute top-40 right-20 text-4xl floating" style="animation-delay: 2s;">💕</div>
+            <div class="absolute top-20 left-10 text-6xl floating hero-decor">❤️</div>
+            <div class="absolute bottom-20 right-10 text-6xl floating hero-decor" style="animation-delay: 1s;">💖</div>
+            <div class="absolute top-40 right-20 text-4xl floating hero-decor" style="animation-delay: 2s;">💕</div>
             
             <div class="text-center relative">
                 <div class="mb-8">
                     <span class="inline-block text-7xl heart-icon-pulse mb-4">❤️</span>
                 </div>
-                <h1 class="handwriting text-7xl md:text-9xl font-bold bg-gradient-to-r from-red-400 via-pink-500 to-rose-400 bg-clip-text text-transparent mb-6">
+                <h1 class="handwriting hero-title text-7xl md:text-9xl font-bold bg-gradient-to-r from-red-400 via-pink-500 to-rose-400 bg-clip-text text-transparent mb-6">
                     Happy Valentine's Day
                 </h1>
-                <p class="handwriting text-5xl md:text-7xl text-pink-600 mb-8 drop-shadow-lg">
+                <p class="handwriting hero-subtitle text-5xl md:text-7xl text-pink-600 mb-8 drop-shadow-lg text-center mx-auto">
                     Ana Mae Nodalo Calumpag
-                    <span class="inline-block animate-ping text-6xl">❤️</span>
+                    <span class="inline-block animate-ping heart-icon-pulse text-4xl md:text-6xl">❤️</span>
                 </p>
                 
                 <!-- Decorative hearts -->
@@ -365,7 +575,7 @@
                         Lang!,
                     </h2>
                     
-                    <div class="handwriting text-2xl md:text-3xl text-gray-700 leading-relaxed space-y-6 max-w-2xl mx-auto">
+                    <div class="handwriting text-2xl md:text-3xl text-white leading-relaxed space-y-6 max-w-2xl mx-auto">
                         <p class="relative pl-8">
                             <span class="absolute left-0 text-4xl">💫</span>
                             Saon mani nako pag sugod ba, Hmmm... kabalo ka sukad tong mi abot kas akong kinabuhi na feel nako angayan kaayo mag pa bilin aris kalibutan basta kauban ka.
@@ -415,11 +625,11 @@
                             <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 text-5xl">
                                 💝
                             </div>
-                            <p class="handwriting text-6xl text-red-600 mb-8">Dili ko mag sawa na higugmaon ka lang!</p>
+                            <p class="handwriting text-3xl md:text-6xl text-white mb-8 text-center mx-auto leading-tight max-w-2xl">Dili ko mag sawa na higugmaon ka lang!</p>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                 <div class="text-left">
-                                    <p class="text-2xl text-gray-700 leading-relaxed">
+                                    <p class="text-2xl text-white leading-relaxed">
                                         Love tika kaayo lang, ayawg ka gool sa akoa kay ikaw ra akong higugmaon hantod sa hantod makita man sab na nimos akoa na dili ko interesado sa uban, isa pa syempre mag focus tas atong pag skwela kay mao ranay maka tabang sa atoa puhon support rako always sa imoha lang. Ayaw kalimot og pasalamat sa ginoo sa tanan nimong nadawat blessings or achievements karon na year.
                                     </p>
                                     <p class="handwriting text-3xl text-pink-600 mt-6">
@@ -452,7 +662,7 @@
                     <div class="text-center mb-8 relative z-10">
                         <span class="inline-block text-5xl mb-4 floating">🎵</span>
                         <h3 class="handwriting text-4xl text-pink-600">A Thousand Years</h3>
-                        <p class="text-sm text-gray-500 mt-1">Christina Perri (Piano/Cello)</p>
+                        <p class="text-sm text-white mt-1">Christina Perri (Piano/Cello)</p>
                     </div>
                     
                     <!-- Album art simulation -->
@@ -513,31 +723,31 @@
                         </h2>
                         
                         <div class="mb-8">
-                            <span class="inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-3 rounded-full text-2xl font-light">
+                            <span id="anniversaryDate" class="inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-3 rounded-full text-2xl font-light">
                                 September 3, 2026
                             </span>
                         </div>
                         
-                        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+                        <p class="text-xl text-white mb-12 max-w-2xl mx-auto">
                             The day we said "Hi!" and my world became complete
                         </p>
                         
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto">
                             <div class="countdown-number rounded-2xl p-6 text-center">
                                 <div class="text-5xl md:text-6xl font-bold text-red-500 mb-2" id="days">00</div>
-                                <div class="text-gray-500 uppercase tracking-wider text-sm">Days</div>
+                                <div class="text-white uppercase tracking-wider text-sm">Days</div>
                             </div>
                             <div class="countdown-number rounded-2xl p-6 text-center">
                                 <div class="text-5xl md:text-6xl font-bold text-red-500 mb-2" id="hours">00</div>
-                                <div class="text-gray-500 uppercase tracking-wider text-sm">Hours</div>
+                                <div class="text-white uppercase tracking-wider text-sm">Hours</div>
                             </div>
                             <div class="countdown-number rounded-2xl p-6 text-center">
                                 <div class="text-5xl md:text-6xl font-bold text-red-500 mb-2" id="minutes">00</div>
-                                <div class="text-gray-500 uppercase tracking-wider text-sm">Minutes</div>
+                                <div class="text-white uppercase tracking-wider text-sm">Minutes</div>
                             </div>
                             <div class="countdown-number rounded-2xl p-6 text-center">
                                 <div class="text-5xl md:text-6xl font-bold text-red-500 mb-2" id="seconds">00</div>
-                                <div class="text-gray-500 uppercase tracking-wider text-sm">Seconds</div>
+                                <div class="text-white uppercase tracking-wider text-sm">Seconds</div>
                             </div>
                         </div>
                         
@@ -562,12 +772,12 @@
         <!-- Romantic Quote Section -->
         <section class="py-16 px-4">
             <div class="max-w-3xl mx-auto">
-                <div class="bg-white/50 backdrop-blur-sm rounded-[3rem] p-12 text-center relative">
+                    <div class="bg-white/50 backdrop-blur-sm rounded-[3rem] p-12 text-center relative">
                     <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 text-4xl bg-white px-4 rounded-full">
                         💕
                     </div>
                     
-                    <p class="handwriting text-4xl md:text-5xl text-gray-700 leading-relaxed mb-6">
+                    <p class="handwriting text-4xl md:text-5xl text-white leading-relaxed mb-6">
                         "Ikaw na jud<br>wala nakoy la-ing<br>gina pamiling lang,<br>I love you so much,<br> and Happy Valentine's Day."
                     </p>
                     
@@ -592,11 +802,11 @@
                     <span class="inline-block text-5xl floating">💌</span>
                 </div>
                 
-                <p class="text-gray-500 mb-6">
+                <p class="text-white mb-6">
                     © 2026, Jet Habac.<br> All rights reserved.
                 </p>
                 
-                <div class="flex justify-center space-x-8 text-gray-400">
+                <div class="flex justify-center space-x-8 text-white">
                     <span>❤️</span>
                     <span>💖</span>
                     <span>💗</span>
@@ -608,27 +818,85 @@
         </footer>
     </div>
 
+    <!-- Animated character bottom-right -->
+    <div class="animated-character" id="animatedCharacter" title="Say hi!">
+        <div class="char-bubble" id="charBubble" role="status" aria-hidden="true">I Love You!</div>
+        <div class="char-float char-robot char-shadow" role="img" aria-label="cute animated companion">
+            <!-- Enhanced SVG robot/companion with mouth and clearer features -->
+            <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <linearGradient id="g1" x1="0" x2="1">
+                        <stop offset="0" stop-color="#9b6bff" />
+                        <stop offset="1" stop-color="#00f0ff" />
+                    </linearGradient>
+                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                        <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <g transform="translate(10,6)">
+                    <!-- body -->
+                    <rect x="10" y="20" rx="14" ry="14" width="100" height="80" fill="url(#g1)" opacity="0.98" />
+                    <!-- face band -->
+                    <rect x="28" y="6" width="64" height="26" rx="8" fill="#071026" />
+
+                    <!-- left eye group -->
+                    <g class="char-eye" id="eyeL" transform="translate(0,0)">
+                        <circle cx="48" cy="54" r="6" fill="#071026" />
+                        <circle cx="46" cy="52" r="2" fill="#ffffff" opacity="0.9" />
+                    </g>
+
+                    <!-- right eye group -->
+                    <g class="char-eye" id="eyeR" transform="translate(0,0)">
+                        <circle cx="80" cy="54" r="6" fill="#071026" />
+                        <circle cx="78" cy="52" r="2" fill="#ffffff" opacity="0.9" />
+                    </g>
+
+                    <!-- mouth (ellipse, toggle class to smile) -->
+                    <ellipse class="char-mouth" id="charMouth" cx="64" cy="76" rx="10" ry="4" fill="#071026" />
+
+                    <!-- small speaker grill -->
+                    <rect x="56" y="74" width="16" height="6" rx="3" fill="#0b1020" opacity="0.06" />
+
+                    <!-- antenna -->
+                    <g id="antenna">
+                        <rect x="58" y="-4" width="4" height="10" fill="#ff4dd2" rx="2" />
+                        <circle cx="60" cy="-6" r="4" fill="#ffb6c1" />
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+
     <script>
-        // Floating Hearts
+        // Floating Neon Shapes
         function createHeart() {
             const heartContainer = document.getElementById('heartContainer');
-            const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
-            
-            // Random heart emoji
-            const hearts = ['❤️', '💖', '💗', '💓', '💕', '💞', '💝', '💘'];
-            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-            
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.fontSize = (Math.random() * 30 + 15) + 'px';
-            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            heart.style.animationDelay = (Math.random() * 2) + 's';
-            
-            heartContainer.appendChild(heart);
-            
+            const el = document.createElement('div');
+            el.classList.add('floating-heart');
+
+            // Futuristic shapes and glyphs
+            const shapes = ['◈','◆','◇','⬢','▣','▦','✦','✧'];
+            const colors = ['#00f0ff','#9b6bff','#ff4dd2','#44ffd6'];
+            el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+
+            const left = Math.random() * 100;
+            el.style.left = left + '%';
+            el.style.fontSize = (Math.random() * 28 + 14) + 'px';
+            el.style.animationDuration = (Math.random() * 6 + 6) + 's';
+            el.style.animationDelay = (Math.random() * 2) + 's';
+            el.style.color = colors[Math.floor(Math.random() * colors.length)];
+            el.style.opacity = 0.85;
+
+            heartContainer.appendChild(el);
+
             setTimeout(() => {
-                heart.remove();
-            }, 13000);
+                el.remove();
+            }, 14000);
         }
         
         // Create hearts more frequently for better effect
@@ -652,23 +920,41 @@
             }
         }
 
-        // Countdown Timer for September 3, 2026
+        // Countdown Timer to next September 3 anniversary (based on current date/time)
+        function getNextAnniversaryDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            // JS months are 0-based: September = 8
+            let anniversary = new Date(year, 8, 3, 0, 0, 0, 0);
+            if (anniversary.getTime() <= now.getTime()) {
+                anniversary = new Date(year + 1, 8, 3, 0, 0, 0, 0);
+            }
+            return anniversary;
+        }
+
         function updateCountdown() {
-            const anniversaryDate = new Date('September 3, 2026 00:00:00').getTime();
             const now = new Date().getTime();
-            const distance = anniversaryDate - now;
-            
+            const anniversary = getNextAnniversaryDate();
+            const anniversaryTime = anniversary.getTime();
+            const distance = anniversaryTime - now;
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            document.getElementById('days').textContent = String(Math.max(0, days)).padStart(2, '0');
+            document.getElementById('hours').textContent = String(Math.max(0, hours)).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(Math.max(0, minutes)).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(Math.max(0, seconds)).padStart(2, '0');
+
+            // Update displayed anniversary date header
+            const annEl = document.getElementById('anniversaryDate');
+            if (annEl) {
+                annEl.textContent = anniversary.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' });
+            }
         }
-        
+
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
@@ -693,23 +979,14 @@
         let animationFrame = null;
         let visualizerActive = false;
 
-        // Multi-color gradients for bars (rich romantic colors)
+        // Neon gradients for a futuristic visualizer
         const colorPalette = [
-            '#ff4d4d', // Bright red
-            '#ff6b6b', // Coral red
-            '#ff8e8e', // Light coral
-            '#ffb6b6', // Pink
-            '#ffb6c1', // Light pink
-            '#ff69b4', // Hot pink
-            '#ff1493', // Deep pink
-            '#ff85b3', // Rose pink
-            '#ffa07a', // Light salmon
-            '#ff7f50', // Coral
-            '#ff6347', // Tomato
-            '#ff4500', // Orange red
-            '#ff8c00', // Dark orange
-            '#ffa500', // Orange
-            '#ffd700'  // Gold
+            '#00f0ff', // cyan
+            '#44ffd6', // aqua
+            '#9b6bff', // violet
+            '#ff4dd2', // magenta
+            '#7effb2', // mint
+            '#6be0ff'
         ];
 
         // Create visualizer bars
@@ -1028,6 +1305,87 @@
                 audioContext.resume();
             }
         });
+
+        // Animated character interactivity
+        (function setupAnimatedCharacter(){
+            const char = document.getElementById('animatedCharacter');
+            if (!char) return;
+                const mouth = document.getElementById('charMouth');
+                const eyeL = document.getElementById('eyeL');
+                const eyeR = document.getElementById('eyeR');
+                const bubble = document.getElementById('charBubble');
+                let bubbleTimer = null;
+
+            // Eye follow: small translate within bounds when mouse moves over character
+            function handlePointerMove(clientX, clientY) {
+                const rect = char.getBoundingClientRect();
+                const cx = rect.left + rect.width/2;
+                const cy = rect.top + rect.height/2;
+                const dx = (clientX - cx) / rect.width; // -0.5..0.5
+                const dy = (clientY - cy) / rect.height;
+                const max = 3; // px movement
+                const tx = Math.max(-max, Math.min(max, dx * max * 4));
+                const ty = Math.max(-max, Math.min(max, dy * max * 4));
+                if (eyeL) eyeL.setAttribute('transform', `translate(${tx},${ty})`);
+                if (eyeR) eyeR.setAttribute('transform', `translate(${tx},${ty})`);
+            }
+
+            char.addEventListener('mousemove', (e) => { handlePointerMove(e.clientX, e.clientY); });
+            // mobile: follow touch
+            char.addEventListener('touchmove', (e) => { if(e.touches && e.touches[0]) handlePointerMove(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
+
+            // On click/tap: wave + smile briefly + spawn glyphs
+            function triggerInteraction() {
+                // wave animation
+                const robot = char.querySelector('.char-robot');
+                if (robot) {
+                    robot.classList.add('char-wave');
+                    setTimeout(() => robot.classList.remove('char-wave'), 420);
+                }
+
+                // smile briefly
+                if (mouth) {
+                    mouth.classList.add('smile');
+                    setTimeout(() => mouth.classList.remove('smile'), 900);
+                }
+
+                // show speech bubble briefly
+                if (bubble) {
+                    bubble.classList.add('show');
+                    bubble.setAttribute('aria-hidden', 'false');
+                    if (bubbleTimer) clearTimeout(bubbleTimer);
+                    bubbleTimer = setTimeout(() => {
+                        bubble.classList.remove('show');
+                        bubble.setAttribute('aria-hidden', 'true');
+                        bubbleTimer = null;
+                    }, 1800);
+                }
+
+                // spawn neon glyphs
+                for (let i=0;i<8;i++) {
+                    setTimeout(() => { try { createHeart(); } catch(e){} }, i*70);
+                }
+            }
+
+            char.addEventListener('click', (e) => { triggerInteraction(); });
+            char.addEventListener('touchstart', (e) => { triggerInteraction(); });
+
+            // On page load / refresh: show greeting bubble briefly
+            if (bubble) {
+                const originalText = bubble.textContent;
+                bubble.textContent = "Hi, I'm Jet!";
+                bubble.classList.add('show');
+                bubble.setAttribute('aria-hidden', 'false');
+                if (bubbleTimer) clearTimeout(bubbleTimer);
+                bubbleTimer = setTimeout(() => {
+                    bubble.classList.remove('show');
+                    bubble.setAttribute('aria-hidden', 'true');
+                    bubbleTimer = null;
+                    // restore bubble text for later clicks
+                    bubble.textContent = originalText;
+                }, 2000);
+            }
+        })();
     </script>
 </body>
 </html>
